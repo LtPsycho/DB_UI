@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8"></meta>
+
+    <title>title</title>
+
+
+</head>
+
+<body>
+
+<p th:text="${person.vardas}+', '+ ${person.pavarde}+', '+  ${person.pareigosID}+', '+  ${person.lytis}+', '+
+${person.vaikai}+', '+  ${person.data_nuo} +', '+  ${person.data_iki}"/>
+<p>Pridetas!</p>
+
+<a href="/">Prideti nauja darbuotoja</a>
+
+
+</body>
+
+</html>

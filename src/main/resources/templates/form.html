@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8"></meta>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <title>title</title>
+
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="">WorkerDB</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="">Add Workers</a></li>
+            <li><a href="dbeditor">Edit DB</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <form action="#" th:action="@{/}" th:object="${person}" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Pavardė:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" th:field="*{pavarde}"/>
+                <td th:if="${#fields.hasErrors('pavarde')}" th:errors="*{pavarde}">Pavarde Error</td>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Vardas:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" th:field="*{vardas}"/>
+                <td th:if="${#fields.hasErrors('vardas')}" th:errors="*{vardas}">Name Error</td>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pareigos">Pareigos:</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="pareigos" th:field="*{pareigosID}">
+                    <div>
+                        <option disabled="true" selected="true" value="">Pasirinkte pareigybę</option>
+                        <option value="1">junior</option>
+                        <option value="2">master</option>
+                        <option value="3">grandmaster</option>
+                        <option value="4">wizard</option>
+                    </div>
+                </select>
+                <td th:if="${#fields.hasErrors('pareigosID')}" th:errors="*{pareigosID}">Pareigos Error</td>
+                <!--<input type="text" class="form-control" th:field="*{pareigosID}" /> -->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="lytis">Lytis:</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="lytis" th:field="*{lytis}">
+                    <div>
+                        <option disabled="true" selected="true" value="">Pasirinkte lytį</option>
+                        <option value="vyr">Vyras</option>
+                        <option value="mot">Moteris</option>
+                    </div>
+                </select>
+                <td th:if="${#fields.hasErrors('lytis')}" th:errors="*{lytis}">Lytis Error</td>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Vaikai:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" th:field="*{vaikai}"/>
+                <td th:if="${#fields.hasErrors('vaikai')}" th:errors="*{vaikai}">Vaikai Error</td>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Galiojimo pradžios data:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="M/m/d" th:field="*{data_nuo}"/>
+                <td th:if="${#fields.hasErrors('data_nuo')}" th:errors="*{data_nuo}">Data nuo Error</td>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Galiojimo pabaiga:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="M/m/d" th:field="*{data_iki}"/>
+                <td th:if="${#fields.hasErrors('data_iki')}" th:errors="*{data_iki}">Data iki Error</td>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-default" value="Submit"/>
+    </form>
+</div>
+
+
+</body>
+
+</html>

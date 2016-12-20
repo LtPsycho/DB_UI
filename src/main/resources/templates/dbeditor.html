@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8"></meta>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap-confirmation.min.js}"/>
+
+    <title>title</title>
+
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">WorkerDB</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Add Workers</a></li>
+            <li class="active"><a href="dbeditor">Edit DB</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <form action="#" th:action="@{/dbeditor}" method="post">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Vardas</th>
+                <th>Pavarde</th>
+                <th>Data nuo</th>
+                <th>Data iki</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="darbuotojas : ${dbeditor}">
+                <td th:text="${darbuotojas.vardas}"></td>
+                <td th:text="${darbuotojas.pavarde}"></td>
+                <td th:text="${darbuotojas.data_nuo}"></td>
+                <td th:text="${darbuotojas.data_iki}"></td>
+                <td>
+                    <button class="btn btn-default" data-toggle="confirmation" name="id" th:value="${darbuotojas.id}">
+                        Remove
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<script>
+    console.log('Bootstrap ' + $.fn.tooltip.Constructor.VERSION);
+    console.log('Bootstrap Confirmation ' + $.fn.confirmation.Constructor.VERSION);
+    $('[data-toggle=confirmation]').confirmation({
+        rootSelector: '[data-toggle=confirmation]',
+        container: 'body'
+    });
+</script>
+
+</body>
+
+</html>
